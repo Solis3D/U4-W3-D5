@@ -27,23 +27,23 @@ public class Prestito {
     @Column(name = "data_restituzione_prevista", nullable = false)
     private LocalDate dataRestituzionePrevista;
 
-    @Column(name = "data_restituzione_effettiva", nullable = false)
+    @Column(name = "data_restituzione_effettiva")
     private LocalDate dataRestituzioneEffettiva;
 
     public Prestito(){}
 
-    public Prestito(Utente utente, ElementoCatalogo elementoCatalogo, LocalDate dataInizioPrestito, LocalDate dataRestituzionePrevista) {
+    public Prestito(Utente utente, ElementoCatalogo elementoCatalogo, LocalDate dataInizioPrestito) {
         this.utente = utente;
         this.elementoCatalogo = elementoCatalogo;
         this.dataInizioPrestito = dataInizioPrestito;
-        this.dataRestituzionePrevista = dataRestituzionePrevista.plusDays(30);
+        this.dataRestituzionePrevista = dataInizioPrestito.plusDays(30);
     }
 
-    public Prestito(Utente utente, ElementoCatalogo elementoCatalogo, LocalDate dataInizioPrestito, LocalDate dataRestituzionePrevista, LocalDate dataRestituzioneEffettiva) {
+    public Prestito(Utente utente, ElementoCatalogo elementoCatalogo, LocalDate dataInizioPrestito,LocalDate dataRestituzioneEffettiva) {
         this.utente = utente;
         this.elementoCatalogo = elementoCatalogo;
         this.dataInizioPrestito = dataInizioPrestito;
-        this.dataRestituzionePrevista = dataRestituzionePrevista.plusDays(30);
+        this.dataRestituzionePrevista = dataInizioPrestito.plusDays(30);
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
     }
 
@@ -86,4 +86,6 @@ public class Prestito {
     public void setDataRestituzioneEffettiva(LocalDate dataRestituzioneEffettiva) {
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
     }
+
+
 }
